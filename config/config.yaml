@@ -1,0 +1,55 @@
+# Project Configuration
+project:
+  name: "E-Commerce Churn Prediction"
+  version: "1.0.0"
+  
+# Data paths (relative to project root)
+paths:
+  raw_data: "data/raw/online_retail_ii.xlsx"
+  interim_data: "data/interim/"
+  processed_data: "data/processed/"
+  models: "models/"
+  reports: "reports/"
+
+# Data cleaning parameters
+cleaning:
+  sheets:
+    - "Year 2009-2010"
+    - "Year 2010-2011"
+  min_quantity: 0          # Exclude negative after handling cancellations
+  min_unit_price: 0.01     # Exclude zero/negative prices
+  country_filter: null     # null = keep all countries
+
+# Feature engineering parameters
+features:
+  observation_start: "2009-12-01"
+  observation_end: "2011-03-09"    # 18 months for features
+  outcome_start: "2011-03-10"
+  outcome_end: "2011-09-09"        # 6 months for churn label
+  churn_threshold_days: 180        # 6 months = 180 days
+
+# Model parameters
+modeling:
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 5
+  
+  logistic_regression:
+    max_iter: 1000
+    class_weight: "balanced"
+    
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    class_weight: "balanced"
+    
+  xgboost:
+    n_estimators: 100
+    max_depth: 6
+    scale_pos_weight: 3    # Handle imbalance
+
+# Dashboard parameters
+dashboard:
+  host: "localhost"
+  port: 8501
+  title: "Customer Churn Analytics Dashboard"
