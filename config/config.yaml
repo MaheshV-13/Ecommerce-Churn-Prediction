@@ -23,10 +23,13 @@ cleaning:
 # Feature engineering parameters
 features:
   observation_start: "2009-12-01"
-  observation_end: "2011-03-09"    # 18 months for features
-  outcome_start: "2011-03-10"
-  outcome_end: "2011-09-09"        # 6 months for churn label
-  churn_threshold_days: 180        # 6 months = 180 days
+  observation_end: "2011-06-01"      # Exclusive (last day of observation is 2011-05-31)
+  outcome_start: "2011-06-01"        # Inclusive
+  outcome_end: "2011-12-09"          # Inclusive
+  churn_threshold_days: 180          # 6 months
+  # Cohort eligibility criteria (production-grade filtering)
+  min_tenure_days: 90      # Minimum days between first purchase and obs_end
+  min_frequency: 2         # Minimum transactions to establish behavioral pattern
 
 # Model parameters
 modeling:
