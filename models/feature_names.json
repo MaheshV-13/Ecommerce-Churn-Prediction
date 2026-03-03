@@ -1,0 +1,19 @@
+{
+  "feature_names": [
+    "recency",
+    "frequency",
+    "monetary_net",
+    "monetary_gross",
+    "unique_products",
+    "avg_items_per_basket",
+    "avg_units_per_line",
+    "days_as_customer",
+    "purchase_velocity",
+    "avg_days_between_purchases",
+    "n_return_invoices",
+    "return_amount",
+    "return_rate",
+    "has_returns"
+  ],
+  "n_features": 14
+}
